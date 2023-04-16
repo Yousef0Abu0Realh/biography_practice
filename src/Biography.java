@@ -1,3 +1,7 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 public class Biography {
     public static void main(String[] args) {
 
@@ -32,6 +36,41 @@ public class Biography {
          */
 
         //YOUR CODE HERE
+
+
+
+        String firstname = ScannerHelper.getString("What is your favorites authors firstname?");
+        String lastname = ScannerHelper.getString("What is your favorites authors lastname?");
+        String country = ScannerHelper.getString("Where is your favorite author from?");
+        String isAliveString = ScannerHelper.getString("Is your favorite author still alive?(Y/N)");
+        boolean isAlive = isAliveString.toUpperCase().startsWith("Y");
+        int age = 0;
+
+        if(isAlive) age = ScannerHelper.getInt("How old is your favorite author");
+
+
+        List<Book> books = new ArrayList<>();
+
+        do{
+            if (ScannerHelper.getString("would you like to enter book information?(Y/N)").toUpperCase().startsWith("N"))break;
+
+            String name = ScannerHelper.getString("What is the name of the book");
+            String genre = ScannerHelper.getString("What is the genre of the book");
+            int pages = ScannerHelper.getInt("How many pages does the book have");
+            books.add(new Book(name,genre,pages));
+
+        }
+        while(true);
+
+        Author author = new Author(firstname,lastname,country,isAlive,age,books);
+
+
+        System.out.println();
+        System.out.println("Author's information = " + author);
+
+
+
+
 
     }
 }
